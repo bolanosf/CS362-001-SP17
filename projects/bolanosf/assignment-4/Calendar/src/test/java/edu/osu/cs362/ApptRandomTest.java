@@ -15,14 +15,14 @@ import static org.junit.Assert.*;
  */
 
 public class ApptRandomTest {
-	private static final long TestTimeout = 60 * 500 * 1; /* Timeout at 30 seconds */
-	private static final int NUM_TESTS=100;
+	private static final long TestTimeout = 30* 500 * 1; /* Timeout at 30 seconds */
+	private static final int NUM_TESTS=400;
 
 	/**
 	 * Return a randomly selected method to be tests !.
 	 */
     public static String RandomSelectMethod(Random random){
-        String[] methodArray = new String[] {"setTitle","setDescription"};// The list of the of methods to be tested in the Appt class
+        String[] methodArray = new String[] {"setTitle","setDescription","setStartHour","setStartMinute","setStartDay","setStartMonth","setStartYear"};// The list of the of methods to be tested in the Appt class
 
     	int n = random.nextInt(methodArray.length);// get a random number between 0 (inclusive) and  methodArray.length (exclusive)
     	            
@@ -68,7 +68,38 @@ public class ApptRandomTest {
 						   String newTitle=(String) ValuesGenerator.getString(random);
 						   appt.setTitle(newTitle);						   
 						}
-					
+						else if(methodName.equals("setDescription")){
+						   String newDesc=(String) ValuesGenerator.getString(random);
+						   appt.setDescription(newDesc);						   
+						}
+						else if(methodName.equals("setStartDay")){
+						   int num=ValuesGenerator.getRandomIntBetween(random,-100,100);
+						   appt.setStartDay(num);						   
+						}
+						else if(methodName.equals("setStartMinute")){
+						   int num= ValuesGenerator.getRandomIntBetween(random,-100,100);
+						   appt.setStartMinute(num);						   
+						}
+						else if(methodName.equals("setStartHour")){
+						   int num= ValuesGenerator.getRandomIntBetween(random,-30,30);
+						   appt.setStartHour(num);						   
+						}
+						else if(methodName.equals("setStartMonth")){
+						   int num=ValuesGenerator.getRandomIntBetween(random,-20,20);
+						   appt.setStartMonth(num);						   
+						}
+						else if(methodName.equals("setStartYear")){
+						   int num= ValuesGenerator.getRandomIntBetween(random,-10,3000);
+						   appt.setStartYear(num);						   
+						}
+						
+						// resets all values to valid inputs so next iterations isValid()
+						// is only dependent on the value that is changed in that iteration
+						appt.setStartDay(1);
+						appt.setStartMinute(1);
+						appt.setStartHour(1);
+						appt.setStartMonth(1);
+						appt.setStartYear(1);	
 				}
 				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
