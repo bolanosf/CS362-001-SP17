@@ -14,7 +14,7 @@ import java.util.LinkedList;
 
 public class TimeTableRandomTest {
 	private static final long TestTimeout = 30 * 500 * 1; /* Timeout at 30 seconds */
-	private static final int NUM_TESTS=200;
+	private static final int NUM_TESTS=300;
 
 	
     /**
@@ -78,24 +78,25 @@ public class TimeTableRandomTest {
 					
 					cal.addAppt(apptAdd[i]);
 					
-					if(startDay == -1)
+					int rand= ValuesGenerator.getRandomIntBetween(random,0,3);
+					if(rand== 0)
 						tt.deleteAppt(apptsNull,apptCheck[i]);
-					else if(startDay == -2)
+					else if(rand == 1)
 						tt.deleteAppt(cal.getAppts(),apptNull);
-					else if (startDay == -3)
+					else if(rand == 2)
 						tt.deleteAppt(cal.getAppts(),apptCheck[i]);
 					else
 						tt.deleteAppt(cal.getAppts(),apptAdd[i]);
 					
-					startDay= ValuesGenerator.getRandomIntBetween(random,-6,33);
+					startDay= ValuesGenerator.getRandomIntBetween(random,-1,33);
 					startMinute= ValuesGenerator.getRandomIntBetween(random,-3,61);
 					startHour= ValuesGenerator.getRandomIntBetween(random,-2,25);
 					startMonth= ValuesGenerator.getRandomIntBetween(random,-3,13);
 					
-					startDay2= ValuesGenerator.getRandomIntBetween(random,0,33);
-					startMinute2= ValuesGenerator.getRandomIntBetween(random,0,61);
-					startHour2= ValuesGenerator.getRandomIntBetween(random,-0,25);
-					startMonth2= ValuesGenerator.getRandomIntBetween(random,0,13);
+					startDay2= ValuesGenerator.getRandomIntBetween(random,-1,33);
+					startMinute2= ValuesGenerator.getRandomIntBetween(random,-3,61);
+					startHour2= ValuesGenerator.getRandomIntBetween(random,-2,25);
+					startMonth2= ValuesGenerator.getRandomIntBetween(random,-3,13);
 				}
 				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);

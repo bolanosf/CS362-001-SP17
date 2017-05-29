@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
  */
 
 public class ApptRandomTest {
-	private static final long TestTimeout = 30* 500 * 1; /* Timeout at 30 seconds */
-	private static final int NUM_TESTS=400;
+	private static final long TestTimeout = 20* 500 * 1; /* Timeout at 30 seconds */
+	private static final int NUM_TESTS=300;
 
 	/**
 	 * Return a randomly selected method to be tests !.
