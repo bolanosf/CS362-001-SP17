@@ -82,10 +82,10 @@ public class TimeTableRandomTest {
 						tt.deleteAppt(apptsNull,apptCheck[i]);
 					else if(startDay == -2)
 						tt.deleteAppt(cal.getAppts(),apptNull);
-					else if (startDay < -3)
-						tt.deleteAppt(cal.getAppts(),apptAdd[i]);
-					else
+					else if (startDay == -3)
 						tt.deleteAppt(cal.getAppts(),apptCheck[i]);
+					else
+						tt.deleteAppt(cal.getAppts(),apptAdd[i]);
 					
 					startDay= ValuesGenerator.getRandomIntBetween(random,-6,33);
 					startMinute= ValuesGenerator.getRandomIntBetween(random,-3,61);
